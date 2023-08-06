@@ -1,0 +1,42 @@
+.header {
+  padding: 25px;
+  box-shadow: 0 0 8px #e0e0e0;
+  background-color: #ffffff;
+
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.header__logo-name {
+  color: black;
+  font-size: 18px;
+}
+.header__nav {
+  list-style-type: none;
+  
+}
+.header__nav-list {
+  display: flex;
+ 
+  
+
+  & li{
+    margin-right: 20px;
+    & a {
+      color: inherit
+    }
+  }
+}
+
+.header__avatar {
+  width: 35px;
+  height: 35px;
+}
