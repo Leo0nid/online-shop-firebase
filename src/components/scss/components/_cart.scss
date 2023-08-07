@@ -1,9 +1,14 @@
+.cart__title {
+  font-size: 36px;
+  display: flex;
+  flex-direction: start;
+}
 .cart__wrapper {
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
   gap: 20px;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
 
 }
 

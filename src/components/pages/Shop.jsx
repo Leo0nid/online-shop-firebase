@@ -1,9 +1,10 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
-import {useDispatch} from 'react-redux'
-import {cartActions} from '../../redux/slices/cartSlice.js'
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../redux/slices/cartSlice.js';
+import { favoritesActions } from '../../redux/slices/favoritesSlice.js';
+import { motion } from 'framer-motion';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +16,7 @@ const Shop = () => {
         const productsCollection = collection(db, 'products');
         const snapshot = await getDocs(productsCollection);
         const arrayData = snapshot.docs.map((doc) => doc.data());
-        
+
         setProducts(arrayData);
         console.log(arrayData);
       } catch (error) {
@@ -25,11 +26,24 @@ const Shop = () => {
 
     getProductsFromFirestore();
   }, []);
-  //добавить в корзину
+
   const addToCartButton = (product) => {
     dispatch(cartActions.addItemToCart(product));
     console.log(product);
   };
+
+  const [activeHearts, setActiveHearts] = useState({});
+
+  const toggleFavorite = (product) => {
+    setActiveHearts((prevActiveHearts) => ({
+      ...prevActiveHearts,
+      [product.id]: !prevActiveHearts[product.id]
+    }));
+
+    dispatch(favoritesActions.addItemToFavorites(product));
+    console.log(product);
+  };
+
   return (
     <div className="shop">
       <div className="container">
@@ -44,7 +58,35 @@ const Shop = () => {
                 <p className="shop__text">{product.price} RU</p>
                 <p className="shop__text">Артикул {product.article} </p>
               </div>
-              <button onClick={() =>addToCartButton(product) } className="shop__button"> В корзину </button>
+            
+              <div className="shop__button">
+              
+              <motion.button onClick={() => addToCartButton(product)} className="shop__button-cart" whileHover={{ scale: 1.1, color: 'white' }}>
+                  В корзину
+                  
+                </motion.button>
+                <svg
+                  onClick={() => toggleFavorite(product)}
+                  className={`shop__heart ${activeHearts[product.id] ? 'active' : ''}`}
+                  height="512px"
+    id="Layer_1"
+    style={{ enableBackground: 'new 0 0 512 512' }}
+    version="1.1"
+    viewBox="0 0 512 512"
+    width="512px"
+    xmlSpace="preserve"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <path
+      d="M340.8,83C307,83,276,98.8,256,124.8c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"
+      fill="#000000" 
+    />
+                 
+                
+                 
+                </svg>
+              </div>
             </div>
           ))}
         </div>
