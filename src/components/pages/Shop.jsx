@@ -5,9 +5,12 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../redux/slices/cartSlice.js';
 import { favoritesActions } from '../../redux/slices/favoritesSlice.js';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const searchValue = useSelector((state) => state.search.searchValue)
+  const [filteredProducts, setFilteredProducts] = useState([]);  //отфильтрованные товары
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +29,16 @@ const Shop = () => {
 
     getProductsFromFirestore();
   }, []);
+  useEffect(() => {
+
+    //поисковик
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchValue)
+    );
+    setFilteredProducts(filtered);
+    console.log(filtered);
+  }, [searchValue, products]);
+
 
   const addToCartButton = (product) => {
     dispatch(cartActions.addItemToCart(product));
@@ -48,7 +61,7 @@ const Shop = () => {
     <div className="shop">
       <div className="container">
         <div className="shop__wrapper">
-          {products.map((product) => (
+          {(searchValue ? filteredProducts : products).map((product) => (
             <div key={product.id} className="shop__cart">
               <div className="shop__image">
                 <img src={product.url} alt="" />
