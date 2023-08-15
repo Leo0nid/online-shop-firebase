@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cartItems: [],
+ 
 };
 
 const cartSlice = createSlice({
@@ -24,6 +25,7 @@ const cartSlice = createSlice({
       const itemToRemove = action.payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== itemToRemove.id);
     },
+  
   },
 });
 

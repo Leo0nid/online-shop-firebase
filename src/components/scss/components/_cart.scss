@@ -1,8 +1,17 @@
+.cart__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart__title-total {
+  font-size:24px;
+}
 .cart__title {
   font-size: 36px;
   display: flex;
   flex-direction: start;
 }
+
 .cart__wrapper {
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));

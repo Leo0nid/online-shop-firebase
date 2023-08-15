@@ -12,11 +12,16 @@ const Cart = () => {
   const cartItemDelete = (product) => {
     dispatch(cartActions.removeItemFromCart(product));
   }
+  //сумма товаров в корзине
+  const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   return (
     <div className="cart">
       <div className="container">
         <div className="cart__wrapper">
+          <div className="cart__group">
           <h2 className='cart__title'>Корзина</h2>
+          <h2 className='cart__title-total'>Сумма : {totalAmount} </h2>
+          </div>
           {cartItems.map((item) => (
             <div key={item.id} className="cart__item">
               <img src={item.url} alt="img" className="cart__image" />

@@ -25,7 +25,7 @@ const Favorites = () => {
                   className="favorites__description">
                   <h3 className="favorites__name">{item.name}</h3>
                   <p className="favorites__desc">{item.desc} RU</p>
-                  <p className="favorites__price">{item.price * item.quantity} RU</p>
+                  <p className="favorites__price">{item.price} RU</p>
                 </div>
 
                 <div className="favorites__clear" onClick={() => removeItemFromFavorites(item)}>
