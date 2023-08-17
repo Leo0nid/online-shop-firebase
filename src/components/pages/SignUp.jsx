@@ -54,12 +54,9 @@ const SignUp = () => {
         email: email,
         photoURL: downloadURL,
       });
-  
-      console.log('Регистрация пользователя и сохранение данных завершены');
-      
       setLoading(false);
       toast.success('Аккаунт создан!');
-      navigate('/login');
+      navigate('/shop');
     } catch (error) {
       setLoading(false);
       toast.error('Ошибка!');
