@@ -137,7 +137,7 @@ const Shop = () => {
               <img src={oneProduct.url} alt="" />
               <div className="modal__descr-block">
                 <h3>{oneProduct.name}</h3>
-                <div className="modal__price">Цена: {oneProduct.price} RU</div>
+                <div className="modal__price">Цена: {oneProduct.price} сом</div>
                 <div className="modal__descr">
                   <div className="modal__descr-title">Описание: </div>
                   {oneProduct.desc}

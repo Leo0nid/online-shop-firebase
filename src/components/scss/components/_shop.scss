@@ -57,18 +57,21 @@
 }
 
 .modal {
-  width: 70%;
-  height: 80vh;
+  width: 60%;
+  height: 70vh;
   position: absolute;
-  top: 2%;
-  left: 15%;
+  top: 15%;
+  left: 20%;
   background-color: white;
-  padding: 2%;
-  box-shadow: 0 0 8px #e0e0e0;
+  padding: 3%;
+  border-radius: 10px;
+
 }
 .modal__icon {
   width: 30px;
   height: 30px;
+  position: absolute;
+  top:5px;
   
 }
 
@@ -91,11 +94,7 @@
     max-width: 50%;
     max-height: 70vh;
   }
-  button {
-    position: absolute;
-    right: 1%;
-    top: 1%;
-  }
+ 
 }
 
 .modal__descr-block {
@@ -111,17 +110,19 @@
     text-align: center;
     margin-top: 2%;
     margin-bottom: 3%;
+    font-weight: 600;
   }
 }
-.modal__article {
-  font-size: 20px;
-}
+
 .modal__price {
-  font-size: 20px;
+  font-size: 18px;
+  margin-top: 5px;
+  
 }
 .modal__descr-title {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  margin-top: 5px;
 }
 
 @media all and (max-width: 1024px) {
@@ -168,4 +169,6 @@
 .modal__buttons {
   display: flex;
   justify-content: center;
+  align-items:center ;
+  margin-top: 10px;
 }

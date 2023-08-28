@@ -50,9 +50,11 @@ const Cart = () => {
             <div>
               <div className="cart__group">
                 <h2 className="cart__title">Корзина</h2>
-                <h2 className="cart__title-total">Сумма : {totalAmount} </h2>
+                <div className='cart__buy-products'>
+                <h2 className="cart__title-total">Итого: {totalAmount} сом </h2>
                 <motion.button
                         whileHover={{ scale: 1.1 }} className="cart__title-buy">К оплате</motion.button>
+                        </div>
               </div>
               {localStorageItems.map((item) => {
                 return (
@@ -60,7 +62,7 @@ const Cart = () => {
                     <img src={item.url} alt="img" className="cart__image" />
                     <div className="cart__desc">
                       <h3 className="cart__name">{item.name}</h3>
-                      <p className="cart__price">{item.price * item.quantity} Сом</p>
+                      <p className="cart__price">{item.price * item.quantity} сом</p>
                     </div>
                     <div className="quantity">
                       <motion.button
