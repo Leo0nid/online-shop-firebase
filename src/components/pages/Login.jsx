@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
+import { motion } from 'framer-motion';
 
 //firebase
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -30,7 +31,7 @@ const Login = () => {
       navigate('/');
     } catch (error) {
       setLoading(false);
-      toast.error(error.message);
+      toast.error('Ошибка!');
     }
   };
   return (
@@ -61,7 +62,7 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button className="login__btn">Войти</button>
+                    <motion.button whileHover={{ scale: 1.1 }} className="login__btn">Войти</motion.button>
                   <p className="login__path">
                     Нет аккаунта?{' '}
                     <Link className="login__path-link" to="/signup">

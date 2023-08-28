@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 //firebase
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -93,9 +94,9 @@ const SignUp = () => {
                   />
                   <input type="file" onChange={(e) => setFile(e.target.files[0])} />
 
-                  <button type="submit" className="login__btn">
+                   <motion.button whileHover={{ scale: 1.1 }} type="submit" className="login__btn">
                     Зарегистрироваться
-                  </button>
+                  </motion.button>
                   <p className="login__path">
                     У вас еще нет аккаунта?{' '}
                     <Link className="login__path-link" to="/login">
