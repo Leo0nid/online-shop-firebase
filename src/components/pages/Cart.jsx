@@ -51,7 +51,8 @@ const Cart = () => {
               <div className="cart__group">
                 <h2 className="cart__title">Корзина</h2>
                 <h2 className="cart__title-total">Сумма : {totalAmount} </h2>
-                <button className="cart__title-buy">Купить</button>
+                <motion.button
+                        whileHover={{ scale: 1.1 }} className="cart__title-buy">К оплате</motion.button>
               </div>
               {localStorageItems.map((item) => {
                 return (
